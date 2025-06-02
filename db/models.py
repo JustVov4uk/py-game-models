@@ -16,6 +16,9 @@ class Skill(models.Model):
     race = models.ForeignKey(Race, on_delete=models.CASCADE,
                              related_name="skills")
 
+    class Meta:
+        unique_together = (("name", "race"),)
+
     def __str__(self) -> str:
         return f"{self.name} ({self.race.name})"
 
